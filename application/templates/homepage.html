@@ -1,9 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TL Appointments</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
 <body>
+    <h1> Appointments </h1>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+    {% block content %}
+
+    <table class = "appointment_table">
+        <tr>
+            <th>Patient</th>
+            <th>Clinician</th>
+            <th>Time</th>
+        </tr>
+        {% for i in range(p_name|length) %}
+        <tr>
+            <td>{{ p_name[i] }}</td>
+            <td>{{ c_name[i] }}</td>
+            <td>{{ a_time[i] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    
+    {% endblock %}
 
 </body>
 </html>

@@ -39,8 +39,6 @@ Last Modified: Dec 16th, 2024
 
 import sqlite3
 
-from flask import flask
-
 # Create the connection
 connection = sqlite3.connect("REST.db")
 

@@ -1,5 +1,7 @@
 """
-    This Create.py file is a place to implement create, read, update, and delete statements
+    This functions.py file is a place to implement create, read, update, and delete statements
+
+    All my functions for the webpage are stored here. 
     
     Author: James Rota
 
@@ -34,15 +36,58 @@ def Create_new_appointment(app_id, clinician_id, patient_id,  appointment_time):
 
 # Read Statements
 
-def get_appointments_info():
-    appointment_info = cursor.execute("""
-                   SELECT appointment.appointment_time, clinician.name AS clinician_name, patient.name AS patient_name
+# Get patient name from appointments table to display on the webpage
+
+def get_appointments_info_patient_name():
+    # Create the connection
+    connection = sqlite3.connect("REST.db")
+
+    cursor = connection.cursor()
+
+    patient_name = cursor.execute("""
+                   SELECT patient.name AS patient_name
                    FROM appointment
-                   JOIN clinician ON appointment.clinician_id = clinician.NPI_NUM
                    JOIN patient ON appointment.patient_id = patient.id
                    """).fetchall()
     
-    print(f'appointments_info: {appointment_info}')
+    connection.close()
+
+    return patient_name
+
+# Get clinician name from appointments table to display on the webpage
+
+def get_appointments_info_clinician_name():
+    # Create the connection
+    connection = sqlite3.connect("REST.db")
+
+    cursor = connection.cursor()
+
+    clinician_name = cursor.execute("""
+                   SELECT clinician.name AS clinician_name
+                   FROM appointment
+                   JOIN clinician ON appointment.clinician_id = clinician.NPI_NUM
+                   """).fetchall()
+    
+    connection.close()
+
+    return clinician_name
+
+# Get appointment time from appointments table to display on the webpage
+
+def get_appointments_info_appointment_time():
+    # Create the connection
+    connection = sqlite3.connect("REST.db")
+
+    cursor = connection.cursor()
+
+    appointment_time = cursor.execute("""
+                   SELECT appointment_time
+                   FROM appointment
+                   """).fetchall()
+    
+    connection.close()
+
+    return appointment_time
 
 # Update Statements
 
@@ -74,12 +119,6 @@ def update_patients_clinician(clinician_id, patient_id):
         cursor.execute(query, (clinician_id, patient_id))
     else:
         print("Sorry, the process cannot be done, clinician does not exist")
-
-
-# TEST 
-
-
-
 
 connection.close()
 
