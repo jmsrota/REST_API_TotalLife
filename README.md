@@ -54,11 +54,16 @@
 
 ## routes.py
 
-    I used Flask and a virtual environment for a quick server solution, this made communication between the database created in part 1 and the html webpage easy to implement. 
+    I used Flask and a virtual environment for a quick server solution, 
+    this made communication between the database created in part 1 and the html 
+    webpage easy to implement. 
 
-    routes.py uses get_appointments_info_patient_name, get_appointments_info_clinician_name, get_appointments_info_appointment_time from my functions.py file, to get the relevant information from the database. Then I send that information to homepage.html and display it in a table. 
+    routes.py uses get_appointments_info_patient_name, get_appointments_info_clinician_name, get_appointments_info_appointment_time from my functions.py file, 
+    to get the relevant information from the database. Then I send that information to homepage.html and display it in a table. 
 
-    ** Note ** I couldn't figure out the time-range implementation, I don't know how this works and couldn't figure out how to sort the items in the database with this time filter. 
+    ** Note ** I couldn't figure out the time-range implementation, 
+    I don't know how this works and couldn't figure out how to sort the items in the 
+    database with this time filter. 
 
 ## homepage.html
 
@@ -66,7 +71,7 @@
 
     Here is what the webpage looks like:
 
-    ![Alt Text](images/Sample.png)
+    ![Homepage screenshot](Total_Life_image.png)
 
 
 ## Instructions
