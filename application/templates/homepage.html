@@ -11,19 +11,24 @@
 
     {% block content %}
 
-    <table class = "appointment_table">
-        <tr>
-            <th>Patient</th>
-            <th>Clinician</th>
-            <th>Time</th>
-        </tr>
-        {% for i in range(p_name|length) %}
-        <tr>
-            <td>{{ p_name[i] }}</td>
-            <td>{{ c_name[i] }}</td>
-            <td>{{ a_time[i] }}</td>
-        </tr>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Clinician</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- For loop going through the appointments table-->
+                {% for i in range(p_name|length) %}
+                <tr class="active-row">
+                    <td>{{ p_name[i] }}</td>
+                    <td>{{ c_name[i] }}</td>
+                    <td>{{ a_time[i] }}</td>
+                </tr>
         {% endfor %}
+            </tbody>
     </table>
 
     
