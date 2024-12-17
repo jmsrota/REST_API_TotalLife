@@ -31,13 +31,15 @@ Last Modified: Dec 16th, 2024
 #    --> Try to select a few fields that might be useful in the context.
 #    --> Setup relevant relationships between the two resources.
 # Reference: https://www.youtube.com/watch?v=29_AuYCrqjU 
-# I used this video as a reference on how to create a database using python
+# I used this video as a reference on how to create a database using sqllite3 and his other videos
 # 
 #
 # 4. Use an SQLlite database to store the data.
 #
 
 import sqlite3
+
+from flask import flask
 
 # Create the connection
 connection = sqlite3.connect("REST.db")
