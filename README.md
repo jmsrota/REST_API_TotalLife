@@ -1,4 +1,4 @@
-# Total life Take Home Project
+# Total Life Take Home Project
 ### Author: James Rota
 
 ## Objective
@@ -44,13 +44,13 @@
 
 ## index.py - the creation of the tables
 
-   index.py is where I create the database using sqlite3, I create the tables with restraints and add sample data to the tables.
+   index.py is where I create the database using sqlite3, I create the tables with restraints and added sample data to the tables.
 
 ## functions.py - the functionality of the project, adding, deleting, updating, selecting from the database.
 
     I used python functions to make querying from the database easy to use when I eventually move on to displaying the information. Each function takes relevant parameters and does the appropriate operation using the inputed values.
 
-    ** Note ** I couldn't figure out how to validate the information in the database, so one could invalid information into the table. 
+    ** Note ** I couldn't figure out how to validate the information in the database, so one could add invalid information into the table. 
 
 ## routes.py
 
@@ -66,7 +66,7 @@
 
     Here is what the webpage looks like:
 
-    ![Homepage Screenshot](images/Sample.png)
+    ![Alt Text](images/Sample.png)
 
 
 ## Instructions
@@ -81,7 +81,7 @@
 
     5. Type in the terminal: "python3 run.py", local server should be running, click on server link "http://127.0.0.1:5000"
 
-    
+
 
 
 
