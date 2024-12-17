@@ -23,7 +23,7 @@ connection.execute("PRAGMA foreign_keys = ON")
 # Create cursor
 cursor = connection.cursor()
 
-# Create Statements
+# ------ Create Statements -------
 
 def Create_new_clinician(NPI_NUM, name, specialty):
     cursor.execute("INSERT OR IGNORE INTO clinician VALUES(?, ?, ?)", (NPI_NUM, name, specialty)) # added the IGNORE TO AVOID DUPLICATES
@@ -34,7 +34,7 @@ def Create_new_patient(patient_id, name, clinician_id, specialty):
 def Create_new_appointment(app_id, clinician_id, patient_id,  appointment_time):
     cursor.execute("INSERT OR IGNORE INTO appointment VALUES(?, ?, ?, ?)", (app_id, clinician_id, patient_id,  appointment_time))
 
-# Read Statements
+# ------- Read Statements -------
 
 # Get patient name from appointments table to display on the webpage
 
@@ -89,7 +89,7 @@ def get_appointments_info_appointment_time():
 
     return appointment_time
 
-# Update Statements
+# ------ Update Statements ------ 
 
 # Helper function to be used in updating patient's clinician, have to make sure the clinician exists
 def check_if_clinician_exists(clinician_id):
@@ -106,7 +106,7 @@ def check_if_clinician_exists(clinician_id):
     
     return False
 
-# Update patient's clinician
+# Update patient's clinician 
 
 def update_patients_clinician(clinician_id, patient_id):
 
@@ -121,6 +121,9 @@ def update_patients_clinician(clinician_id, patient_id):
         cursor.execute(query, (clinician_id, patient_id))
     else:
         print("Sorry, the process cannot be done, clinician does not exist")
+
+
+# ------ Delete statements ------
 
 # Delete patient
 
