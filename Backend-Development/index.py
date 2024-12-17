@@ -50,48 +50,48 @@ cursor = connection.cursor()
 
 #Create the tables
 
-# Clinician table - (NPI (Primary Key), clinician name, specialty (Anixety, Depression, etc))
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS clinician (
-#     NPI_NUM INTEGER PRIMARY KEY, 
-#     name TEXT, 
-#     specialty TEXT
-# )
-# """)
+#Clinician table - (NPI (Primary Key), clinician name, specialty (Anixety, Depression, etc))
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS clinician (
+    NPI_NUM INTEGER PRIMARY KEY, 
+    name TEXT, 
+    specialty TEXT
+)
+""")
 
-# # Patient table - (id (Primary Key), patient name, 
-# #                  clinician_id (forign key from clinician table),
-# #                  trouble (Why the patient is seeking therapy))
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS patient (
-#     id INTEGER PRIMARY KEY,
-#     name TEXT, 
-#     clinician_id INTEGER, 
-#     trouble TEXT,
-#     FOREIGN KEY (clinician_id) REFERENCES clinician(NPI_NUM) ON DELETE CASCADE
-# )
-# """)
+# Patient table - (id (Primary Key), patient name, 
+#                  clinician_id (forign key from clinician table),
+#                  trouble (Why the patient is seeking therapy))
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS patient (
+    id INTEGER PRIMARY KEY,
+    name TEXT, 
+    clinician_id INTEGER, 
+    trouble TEXT,
+    FOREIGN KEY (clinician_id) REFERENCES clinician(NPI_NUM) ON DELETE CASCADE
+)
+""")
 
-# # Appointment table - (id (Primary Key), clinician_id (foreign key),
-# #                      patient_id (foreign key), 
-# #                      appointment_time (Time the appointment takes place) )
-# #
+# Appointment table - (id (Primary Key), clinician_id (foreign key),
+#                      patient_id (foreign key), 
+#                      appointment_time (Time the appointment takes place) )
+#
 
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS appointment (
-#     id INTEGER PRIMARY KEY,
-#     clinician_id INTEGER, 
-#     patient_id INTEGER, 
-#     appointment_time TEXT,
-#     FOREIGN KEY (clinician_id) REFERENCES clinician(NPI_NUM) ON DELETE CASCADE,
-#     FOREIGN KEY (patient_id) REFERENCES patient(id) ON DELETE CASCADE
-# )
-# """)
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS appointment (
+    id INTEGER PRIMARY KEY,
+    clinician_id INTEGER, 
+    patient_id INTEGER, 
+    appointment_time TEXT,
+    FOREIGN KEY (clinician_id) REFERENCES clinician(NPI_NUM) ON DELETE CASCADE,
+    FOREIGN KEY (patient_id) REFERENCES patient(id) ON DELETE CASCADE
+)
+""")
 
 #Inserting sample data
-#cursor.execute("INSERT INTO clinician VALUES(?, ?, ?)", (1, "John", "Anxiety"))
-#cursor.execute("INSERT INTO patient VALUES(?, ?, ?, ?)", (1, "Karen", 1, "Depression"))
-#cursor.execute("INSERT INTO appointment VALUES(?, ?, ?, ?)", (1, 1, 1, "12:30"))
+cursor.execute("INSERT INTO clinician VALUES(?, ?, ?)", (1, "John", "Anxiety"))
+cursor.execute("INSERT INTO patient VALUES(?, ?, ?, ?)", (1, "Karen", 1, "Depression"))
+cursor.execute("INSERT INTO appointment VALUES(?, ?, ?, ?)", (1, 1, 1, "12:30"))
 
 connection.commit() # commit changes
 connection.close() # close the connection
