@@ -2,7 +2,7 @@
     This functions.py file is a place to implement create, read, update, and delete statements
 
     All my functions for the webpage are stored here. 
-    
+
     Author: James Rota
 
     Date Created: Dec 16, 2024
@@ -29,10 +29,10 @@ def Create_new_clinician(NPI_NUM, name, specialty):
     cursor.execute("INSERT OR IGNORE INTO clinician VALUES(?, ?, ?)", (NPI_NUM, name, specialty)) # added the IGNORE TO AVOID DUPLICATES
 
 def Create_new_patient(patient_id, name, clinician_id, specialty):
-    cursor.execute("INSERT INTO patient VALUES(?, ?, ?, ?)", (patient_id, name, clinician_id, specialty))
+    cursor.execute("INSERT OR IGNORE INTO patient VALUES(?, ?, ?, ?)", (patient_id, name, clinician_id, specialty))
 
 def Create_new_appointment(app_id, clinician_id, patient_id,  appointment_time):
-    cursor.execute("INSERT INTO appointment VALUES(?, ?, ?, ?)", (app_id, clinician_id, patient_id,  appointment_time))
+    cursor.execute("INSERT OR IGNORE INTO appointment VALUES(?, ?, ?, ?)", (app_id, clinician_id, patient_id,  appointment_time))
 
 # Read Statements
 
@@ -106,6 +106,8 @@ def check_if_clinician_exists(clinician_id):
     
     return False
 
+# Update patient's clinician
+
 def update_patients_clinician(clinician_id, patient_id):
 
     query = """
@@ -119,6 +121,41 @@ def update_patients_clinician(clinician_id, patient_id):
         cursor.execute(query, (clinician_id, patient_id))
     else:
         print("Sorry, the process cannot be done, clinician does not exist")
+
+# Delete patient
+
+def remove_patient(patient_name):
+
+    query = """
+            DELETE FROM patient
+            WHERE name = ?;
+            
+            """
+    
+    cursor.execute(query, (patient_name))
+
+# Delete clinician
+
+def remove_clinician(clinician_name):
+
+    query = """
+            DELETE FROM clinician
+            WHERE name = ?;
+
+            """
+    cursor.execute(query, (clinician_name))
+
+# Delete appointment
+
+def remove_appointment(app_num):
+
+    query = """
+            DELETE FROM appointment
+            WHERE id = ?;
+
+            """
+    cursor.execute(query, (app_num))
+
 
 connection.close()
 
