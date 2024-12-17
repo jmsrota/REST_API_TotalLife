@@ -71,7 +71,7 @@
 
     Here is what the webpage looks like:
 
-    ![Homepage screenshot](Total_Life_image.png)
+![Homepage screenshot](Total_Life_image.png)
 
 
 ## Instructions
